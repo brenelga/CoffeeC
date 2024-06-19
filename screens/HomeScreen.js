@@ -6,7 +6,8 @@ export default function HomeScreen({navigation}) {
         <View style={styles.container}>
             <Text style={styles.title}>CoffeeCard</Text>
             <Text style={styles.title}>Bienvenido</Text>
-            <Button title="Saldo" onPress={()=>navigation.navigate('CSaldo')} />
+            <Button title="Consulta de Saldo" onPress={()=>navigation.navigate('CSaldo')} />
+            <Button title="Consulta de Movimientos" onPress={()=>navigation.navigate('CMovimiento')} />
             <Button title="Logout" onPress={()=>navigation.navigate('Login')} />
         </View>
     );

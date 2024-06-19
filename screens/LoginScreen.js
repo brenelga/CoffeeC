@@ -4,11 +4,15 @@ import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import axios from 'axios';
 import HomeScreen from './HomeScreen';
 import Registro from "./Registro";
+import { Formik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+    usuario: Yup.string().matches(/^\d{10}$/, 'Por favor escriba su matrícula, número de trabajador o número de usuario').required('Campo Obligatorio'),
+    password: Yup.string().matches(/^[a-zA-Z0-9]{8,16}$/, 'Contraseña Obligatoria').required('Campo Obligatorio'),
+});
 
 export default function LoginScreen({ navigation }){
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    
     const handleLogin = () => {
         navigation.navigate('Home');
     };
@@ -19,10 +23,35 @@ export default function LoginScreen({ navigation }){
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Iniciar Sesion</Text>
-            <TextInput style = {styles.input} placeholder="Usuario" value={user} onChangeText={setUser} />
-            <TextInput style = {styles.input} placeholder="Contrasena" value={password} onChangeText={setPassword} />
-            <Button title="Iniciar Sesión" onPress={handleLogin}/>
-            <Button title="Registrate" onPress={handleRegistro}/>
+            <Formik
+            initialValues={{usuario: '', password: ''}}
+            validationSchema={validationSchema}
+            onSubmit={handleLogin}
+            >
+                {({handleChange, handleBlur, handleSubmit, values, error, touched}) =>(
+                    <View>
+                        <TextInput 
+                            style={styles.input}
+                            placeholder="Usuario"
+                            onChangeText={handleChange('usuario')}
+                            onBlur={handleBlur('usuario')}
+                            value={values.usuario}
+                        />
+                        {touched.usuario && error.usuario && <Text style={styles.error}>{error.usuario}</Text>}
+                        <TextInput
+                            style={styles.input}
+                            placeholder="contraseña"
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            value={values.password}
+                        />
+                        {touched.password && error.password && <Text style={styles.error}>{error.password}</Text>}
+                        <Button title="Iniciar Sesión" onPress={handleSubmit}/>
+                        <Button title="Registrate" onPress={handleRegistro}/>
+                    </View>
+                )
+                }
+            </Formik>
         </View>
     );
 }
@@ -44,5 +73,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 12,
         paddingHorizontal: 8,
+    },
+    error: {
+        fontSize: 12,
+        color: 'red',
+        marginBottom: 8,
     },
 });
