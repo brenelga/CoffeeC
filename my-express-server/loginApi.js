@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 //Conexión a Mongo Atlas
-const dbURI = 'mongodb+srv://jesusgalicia23e:rpp978ZC0EBvfaZj@cluster0.l4qpwpc.mongodb.net/';
+const dbURI = process.env.MONGO_URI;
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true}).then(()=>console.log('App conectada correctamente')).catch((error)=>console.log('Error de Conexion', error));
 
 //Middleware
