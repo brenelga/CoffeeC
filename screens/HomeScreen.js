@@ -3,6 +3,10 @@ import { View, StyleSheet } from "react-native";
 import { Button, Text, Title } from "react-native-paper";
 
 export default function HomeScreen({navigation}) {
+    const handleSaldo = () => {
+        navigation.navigate('Saldo');
+    };
+
     return (
         <View style={styles.container}>
             <Title style={styles.title}>CoffeeCard</Title>
