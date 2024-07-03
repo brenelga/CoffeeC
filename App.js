@@ -5,6 +5,7 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import Registro from './screens/Registro';
 import CSaldo from './screens/CSaldo';
+import Movimiento from './screens/CMovimientos'
 import { MD3DarkTheme as DefaultTheme, PaperProvider } from "react-native-paper";
 
 const Stack = createStackNavigator();
@@ -29,6 +30,7 @@ export default function App() {
           <Stack.Screen name='Home' component={HomeScreen}/>
           <Stack.Screen name='Registro' component={Registro}/>
           <Stack.Screen name='Saldo' component={CSaldo}/>
+          <Stack.Screen name='Movimientos' component={Movimiento}/>
         </Stack.Navigator>
       </PaperProvider>
     </NavigationContainer>
