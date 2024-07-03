@@ -1,27 +1,29 @@
-import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Text, useTheme } from 'react-native-paper';
+import LinearGradient from 'react-native-linear-gradient';
 
-export default function HomeScreen({navigation}) {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>CoffeeCard</Text>
-            <Text style={styles.title}>Bienvenido</Text>
-            <Button title="Consulta de Saldo" onPress={()=>navigation.navigate('CSaldo')} />
-            <Button title="Consulta de Movimientos" onPress={()=>navigation.navigate('CMovimiento')} />
-            <Button title="Logout" onPress={()=>navigation.navigate('Login')} />
-        </View>
-    );
+export default function HomeScreen() {
+  const theme = useTheme();
+
+  return (
+    <LinearGradient
+      colors={['red', 'lightgreen', 'pink', 'purple']}
+      style={styles.container}
+    >
+      <Text style={styles.text}>Home Screen</Text>
+    </LinearGradient>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 16,
-        textAlign: 'center',
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    color: 'white',
+    fontSize: 24,
+  },
 });
