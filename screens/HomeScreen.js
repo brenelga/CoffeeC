@@ -6,18 +6,24 @@ export default function HomeScreen({navigation}) {
     const handleSaldo = () => {
         navigation.navigate('Saldo');
     };
+    const handleMovimiento = () => {
+        navigation.navigate('Movimientos');
+    };
+    const handleLogout = () => {
+        navigation.navigate('Login');
+    }; 
 
     return (
         <View style={styles.container}>
             <Title style={styles.title}>CoffeeCard</Title>
             <Text style={styles.subtitle}>Bienvenido</Text>
-            <Button mode="contained" onPress={() => navigation.navigate('CSaldo')} style={styles.button}>
+            <Button mode="contained" onPress={handleSaldo} style={styles.button}>
                 Consulta de Saldo
             </Button>
-            <Button mode="contained" onPress={() => navigation.navigate('CMovimiento')} style={styles.button}>
+            <Button mode="contained" onPress={handleMovimiento} style={styles.button}>
                 Consulta de Movimientos
             </Button>
-            <Button mode="contained" onPress={() => navigation.navigate('Login')} style={styles.button}>
+            <Button mode="contained" onPress={handleLogout} style={styles.button}>
                 Logout
             </Button>
         </View>
