@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Image } from "react-native";
 import axios from 'axios';
 import HomeScreen from './HomeScreen';
 import Registro from "./Registro";
@@ -22,6 +22,7 @@ export default function LoginScreen({ navigation }){
 
   return (
     <View style={styles.container}>
+      <Image source={require('./resources/coffeec.jpg')} style={styles.icon}/>
       <Text style={styles.title}>Iniciar Sesion</Text>
       <Formik
         initialValues={{ usuario: '', password: '' }}
@@ -87,5 +88,13 @@ const styles = StyleSheet.create({
   button: {
     marginBottom: 30,
     marginTop: 8,
-  }
+  },
+  icon: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+    alignContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
 });

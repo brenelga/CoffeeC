@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Button, StyleSheet, ScrollView, Image } from "react-native";
 import { Title } from "react-native-paper";
 import { Table, TableWrapper, Row, Rows, Col} from "react-native-table-component";
 
@@ -15,6 +15,7 @@ export default function CMovimiento({navigation}){
 
     return (
         <View style={styles.container}>
+            <Image source={require('./resources/coffeec.jpg')} style={styles.icon}/>
             <Title style={styles.titulo}>Consulta de Movimientos</Title>
             <ScrollView>
                 <Table borderStyle={{borderWidth: 1}}>
@@ -38,5 +39,11 @@ const styles = StyleSheet.create({
     },
     text: {
 
-    }
+    },
+    icon: {
+        width: 150,
+        height: 150,
+        marginBottom: 20,
+        alignSelf: 'center',
+    },
 })

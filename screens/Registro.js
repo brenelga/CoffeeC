@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { TextInput, Button, Text, Title } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -16,6 +16,7 @@ const validationSchema = Yup.object().shape({
 export default function Registro({ navigation }){
     return (
         <View style={styles.container}>
+            <Image source={require('./resources/coffeec.jpg')} style={styles.image}/>
             <Title style={styles.title}>Registro</Title>
             <Formik
                 initialValues={{ user: '', nombre: '', appat: '', apmat: '', tarjeta: '', password: '' }}
@@ -120,4 +121,10 @@ const styles = StyleSheet.create({
         color: 'red',
         marginBottom: 8,
     },
+    image: {
+        height: 150,
+        width: 150,
+        marginBottom: 20,
+        alignSelf: 'center',
+    },
 });

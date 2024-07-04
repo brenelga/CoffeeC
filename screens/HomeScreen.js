@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { Button, Text, Title } from "react-native-paper";
 
 export default function HomeScreen({navigation}) {
@@ -15,6 +15,7 @@ export default function HomeScreen({navigation}) {
 
     return (
         <View style={styles.container}>
+            <Image source={require('./resources/coffeec.jpg')} style={styles.icon}/>
             <Title style={styles.title}>CoffeeCard</Title>
             <Text style={styles.subtitle}>Bienvenido</Text>
             <Button mode="contained" onPress={handleSaldo} style={styles.button}>
@@ -53,4 +54,10 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         width: 200,
     },
+    icon: {
+        width: 150,
+        height: 150,
+        marginBottom: 20,
+        alignSelf: 'center',
+    }
 });
